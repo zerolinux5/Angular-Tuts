@@ -1,10 +1,28 @@
-angular.module("myApp", [])
-.controller('MyController', 
-function($scope, $interpolate) {
+angular.module("emailParser", [])
+.config(['$interpolateProvider',
+	function($interpolateProvider) {
+		$interpolateProvider.startSymbol('__');
+		$interpolateProvider.endSymbol('__');
+}])
+.factory('EmailParser', ['$interpolate',
+	function($interpolate) {
+		//a service to handle parsing
+		return {
+			parse: function(text, context) {
+				var template = $interpolate(text);
+				return template(context);
+			}
+		}
+}]);
+
+angular.module("myApp", ['emailParser'])
+.controller('MyController', ['$scope', 'EmailParser', 
+function($scope, EmailParser) {
 	$scope.$watch('emailBody', function(body){
 		if (body){
-			var template = $interpolate(body);
-			$scope.previewText = template({to: $scope.to});
+			$scope.previewText = EmailParser.parse(body, {
+				to:$scope.to
+			});
 		}
 	});
-});
+}]);
