@@ -10,9 +10,22 @@
 			<fieldset>
 				<legend>Signup</legend>
 
+				<div class = "row">
+					<div class="large-12 columns">
+						<label>Your name</label>
+						<input type="text"
+						placeholder="Name"
+						name="name"
+						ng-model="signup.name"
+						ng-minlength=3
+						ng-maxlength=20 required>
+					</div>
+				</div>
+
 				<button type="submit" class="button radius">Submit</button>
 			</fieldset>
 		</form>
+
 		<script type="text/javascript" src="js/signup.js"></script>
 	</body>
 </html>
