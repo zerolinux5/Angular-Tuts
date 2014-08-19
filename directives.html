@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+	<head>
+		<title>Simple Directive</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.js">
+		</script>
+	</head>
+	<body>
+		<my-directive></my-directive>
+  		<div my-directive></div>
+		<script>
+		angular.module("myApp", [])
+			.directive('myDirective', function() {
+			return {
+			restrict: 'AE',
+			template: '<a href="http://google.com">Click me</a>'
+			}
+		})
+		</script>
+	</body>
+</html>
