@@ -17,4 +17,16 @@ angular.module("myApp", [])
 			});
 		}
 	};
+}])
+
+.controller('signupController', ['$scope', 
+	function($scope){
+		$scope.submitted = false;
+		$scope.signupForm = function() {
+			if($scope.signup_form.$valid) {
+				//submit as normal
+			} else {
+				$scope.signup_form.submitted = true;
+			}
+		}
 }]);
