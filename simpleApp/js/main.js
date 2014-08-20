@@ -43,9 +43,11 @@ app.controller('MailListingController', ['$scope', '$http', function($scope, $ht
 
 app.controller('ContentController', ['$scope', function($scope) {
 	$scope.showingReply = false;
+	$scope.reply = {};
 
-	$scope.showReply = function() {
-		$scope.showingReply = true;
+	$scope.toggleReplayForm = function() {
+		$scope.showingReply = !$scope.showingReply;
+		$scope.reply = {};
 	};
 }]);
 
