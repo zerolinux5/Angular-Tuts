@@ -16,6 +16,6 @@ app.controller('HomeController', function() {
 
 });
 
-app.controller('SettingsController', function() {
-
+app.controller('SettingsController', function($scope) {
+	$scope.name = "Ari";
 });
