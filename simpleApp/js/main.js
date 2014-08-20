@@ -48,7 +48,14 @@ app.controller('ContentController', ['$scope', function($scope) {
 	$scope.toggleReplayForm = function() {
 		$scope.showingReply = !$scope.showingReply;
 		$scope.reply = {};
+		$scope.reply.to = $scope.selectedMail.from.join(", ");
+		$scope.reply.body = "\n\n ---------------\n\n" + $scope.selectedMail.body;
 	};
+
+	$scope.$watch('selectedMail', function(evt){
+		$scope.showingReply = false;
+		$scope.reply = {};
+	});
 }]);
 
 app.controller('SettingsController', function($scope) {
