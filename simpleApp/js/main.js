@@ -16,14 +16,19 @@ app.controller('HomeController', function() {
 
 });
 
-app.controller('MailListingController', function($scope) {
-	$scope.email = [{
-		'id': 1,
-		'from': 'fred@fullstack.io',
-		'to': 'ari@fullstack.io',
-		'subject': 'Great job',
-		'body': 'Congrats on the release of the book!'
-	}];
+app.controller('MailListingController', function($scope, $http) {
+	$scope.email = [];
+
+	$http({
+		method: 'GET',
+		url: '/api/mail'
+	})
+	.success(function(data, status, headers) {
+		$scope.email = data.all;
+	})
+	.error(function(data, status, headers) {
+
+	});
 });
 
 app.controller('ContentController', function($scope) {
