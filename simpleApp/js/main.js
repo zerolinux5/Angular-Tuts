@@ -66,7 +66,7 @@ app.controller('MailListingController', ['$scope', 'mailService', function($scop
 	});
 }]);
 
-app.controller('ContentController', ['$scope', 'mailService', function($scope, mailService) {
+app.controller('ContentController', ['$scope', '$rootScope','mailService', function($scope, $rootScope, mailService) {
 	$scope.showingReply = false;
 	$scope.reply = {};
 
@@ -78,11 +78,13 @@ app.controller('ContentController', ['$scope', 'mailService', function($scope, m
 	};
 
 	$scope.sendReply = function() {
+		$scope.showingReply = false;
+		$rootScope.loading = true;
 		mailService.sendEmail($scope.reply)
 		.then(function(status) {
-
+			$rootScope.loading = false;
 		}, function(err){
-
+			$rootScope.loading = false;
 		});
 	}
 
