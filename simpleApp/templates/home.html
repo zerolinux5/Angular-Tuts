@@ -16,6 +16,16 @@
 		<h1> No conversation selected</h1>
 	</div>
 	<div ng-show="selectedMail">
-		{{ selectedMail }}
+		<div class="row header">
+			<div class="small-6 columns"> {{ selectedMail.subject}}</div>
+			<div class="small-6 columns"> {{ selectedMail.sent_at}}</div>
+		</div>
+		<div class= "row actions">
+			<div class="small-8 columns">{{ selectedMail.from}} to {{selectedMail.to}}</div>
+			<a ng-click="showReply()" class="button radius push-1">Reply</a>
+		</div>
+		<div class="small-12 columns">
+			{{selectedMail.body}}
+		</div>
 	</div>
 </div>
