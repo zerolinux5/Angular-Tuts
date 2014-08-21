@@ -104,7 +104,6 @@ function m(e,t){return e+t&4294967295}var a="0123456789abcdef".split("");return 
 				};
 			}
 		],
-		compile: function(tElement, tAttrs, transclude){},
 		link: function(scope, iElement, iAttrs, controller){
 			var size = iAttrs.gravatarSize || 80;
 
