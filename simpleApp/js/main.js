@@ -63,7 +63,15 @@ app.directive('emailListing', function() {
 			action: '&', //accept a function as a parameter
 			shouldUseGravater: '@' //accept a string as a parameter
 		},
-		templateUrl: '/templates/emailListing.html'
+		templateUrl: '/templates/emailListing.html',
+		controller: ['$scope', '$element', '$attrs', '$transclude', 
+			function($scope, $element, $attrs, $transclude) {
+
+				$scope.handleClick = function () {
+					$scope.action({selectedMail: $scope.email});
+				};
+			}
+		]
 	}
 });
 
